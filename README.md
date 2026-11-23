@@ -17,9 +17,11 @@ python3 -m venv .venv
 Log in once to both services (run in a terminal, the scripts ask for input; passwords are not stored):
 
 ```bash
-.venv/bin/python garmin_login.py   # tokens  -> ~/.garminconnect
-.venv/bin/python renpho_login.py   # session -> ~/.renpho/session.json, chosen profile -> ~/.renpho/config.json
+.venv/bin/python garmin_login.py   # tokens -> Keychain item "renpho-to-garmin.garmin"
+.venv/bin/python renpho_login.py   # session + chosen profile -> Keychain item "renpho-to-garmin.renpho"
 ```
+
+Tokens live in the macOS login Keychain (via [keyring](https://github.com/jaraco/keyring)), not in files in your home folder. You can see or delete them in Keychain Access. After a Python upgrade macOS may ask once to allow access: choose "Always Allow". Running a login script again replaces the saved tokens.
 
 `renpho_login.py` lists all measurement profiles of the Renpho account (family members) and asks which one goes to Garmin.
 
@@ -86,4 +88,4 @@ Uploaded weigh-ins have source `INDEX_SCALE` in Garmin; old Garmin CSV imports h
 - Skeletal muscle mass for Garmin is computed as `weight × skeletal muscle %` (Renpho Cloud sends the percentage).
 - When a login expires, the sync says so; run `garmin_login.py` or `renpho_login.py` again.
 - Both Garmin Connect and Renpho Cloud APIs are unofficial ([python-garminconnect](https://github.com/cyberjunky/python-garminconnect), [renpho-py](https://github.com/ChocoTonic/renpho-py)) and may break when the services change.
-- CSV, FIT, JSON and token files are in `.gitignore`. Keep your CSV backup yourself.
+- CSV, FIT and JSON files are in `.gitignore`. Keep your CSV backup yourself.
