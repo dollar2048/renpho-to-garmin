@@ -1,0 +1,32 @@
+# --- Personal health data: never commit ---
+# RENPHO exports and any other CSV / spreadsheet exports
+*.csv
+*.CSV
+*.xlsx
+*.xls
+# Generated FIT files (contain every weigh-in)
+*.fit
+*.FIT
+# Raw API dumps you may save while debugging
+*.json
+!requirements*.json
+
+# --- Credentials / tokens: never commit ---
+# Garmin tokens (default is ~/.garminconnect, but GARMINTOKENS may point here)
+.garminconnect/
+garmin_tokens*/
+*token*.json
+.env
+.env.*
+
+# --- Python ---
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+# --- OS / editor / tools ---
+.DS_Store
+.idea/
+.vscode/
+.claude/settings.local.json
