@@ -30,3 +30,6 @@ __pycache__/
 .idea/
 .vscode/
 .claude/settings.local.json
+
+# Built Alfred workflow
+dist/

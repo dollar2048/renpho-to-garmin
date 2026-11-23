@@ -17,7 +17,7 @@ from typing import Any
 
 from garmin_client import connect
 
-CHUNK_DAYS = 90  # keep each range request small; Garmin limits are not documented
+CHUNK_DAYS = 365  # Garmin limits are not documented; 730 also returned complete data in tests
 
 
 def fetch_weigh_ins(api, start: date, end: date) -> list[dict[str, Any]]:
