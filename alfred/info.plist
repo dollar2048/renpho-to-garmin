@@ -92,23 +92,31 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>lastpathcomponent</key>
+				<key>alignment</key>
+				<integer>0</integer>
+				<key>backgroundcolor</key>
+				<string></string>
+				<key>fadespeed</key>
+				<integer>0</integer>
+				<key>fillmode</key>
+				<integer>0</integer>
+				<key>font</key>
+				<string></string>
+				<key>ignoredynamicplaceholders</key>
 				<false/>
-				<key>onlyshowifquerypopulated</key>
-				<true/>
-				<key>removeextension</key>
-				<false/>
-				<key>text</key>
+				<key>largetypetext</key>
 				<string>{query}</string>
-				<key>title</key>
-				<string>Renpho → Garmin</string>
+				<key>textcolor</key>
+				<string></string>
+				<key>wrapat</key>
+				<integer>60</integer>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.output.notification</string>
+			<string>alfred.workflow.output.largetype</string>
 			<key>uid</key>
 			<string>A1B2C3D4-0003-4000-8000-000000000003</string>
 			<key>version</key>
-			<integer>1</integer>
+			<integer>3</integer>
 		</dict>
 	</array>
 	<key>readme</key>
@@ -121,6 +129,8 @@
 Before the first use, run once in a terminal inside the project folder:
   .venv/bin/python garmin_login.py
   .venv/bin/python renpho_login.py
+
+The result is shown in Large Type: big text in the middle of the screen, it stays until you click or press a key.
 
 Log: ~/Library/Logs/renpho-garmin-sync.log</string>
 	<key>uidata</key>

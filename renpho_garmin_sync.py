@@ -19,7 +19,9 @@ from pathlib import Path
 
 from garmin_client import connect as connect_garmin
 from garmin_weighins import fetch_weigh_ins
-from renpho_client import connect as connect_renpho, load_profile_user_id
+from renpho import RenphoAPIError, RenphoSessionError
+
+from renpho_client import RELOGIN_HINT, connect as connect_renpho, load_profile_user_id
 from renpho_to_fit import Measurement, build_fit
 
 
@@ -62,7 +64,11 @@ def main() -> int:
     since = datetime.now(timezone.utc) - timedelta(days=args.days) if args.days else datetime.min.replace(tzinfo=timezone.utc)
     period = f"in the last {args.days} days" if args.days else "in total"
     renpho = connect_renpho()
-    rows = renpho.get_all_measurements(profile_user_id=load_profile_user_id())
+    try:
+        rows = renpho.get_all_measurements(profile_user_id=load_profile_user_id())
+    except (RenphoAPIError, RenphoSessionError) as error:
+        print(f"Renpho session does not work ({error}). {RELOGIN_HINT}", file=sys.stderr)
+        return 1
     candidates = sorted(
         (m for m in map(from_renpho, rows) if m and m.taken_at >= since),
         key=lambda m: m.taken_at,

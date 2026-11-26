@@ -3,6 +3,10 @@
 Saves the session token and the chosen measurement profile in the macOS Keychain
 (item "renpho-to-garmin.renpho"). The password itself is never stored.
 
+Warning: Renpho allows one active session per account, so this login logs the
+phone app out (and the next phone login revokes this session). Prefer
+renpho_import_session.py, which reuses the phone's own session.
+
 Usage (run in a terminal, it asks for input):
     .venv/bin/python renpho_login.py
 """
